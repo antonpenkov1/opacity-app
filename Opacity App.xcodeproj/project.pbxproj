@@ -13,6 +13,7 @@
 		D2898B7829DCCC000078AC72 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2898B7729DCCC000078AC72 /* Preview Assets.xcassets */; };
 		D2898B7A29DCCC000078AC72 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2898B7929DCCC000078AC72 /* Persistence.swift */; };
 		D2898B7D29DCCC000078AC72 /* Opacity_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2898B7B29DCCC000078AC72 /* Opacity_App.xcdatamodeld */; };
+		D2898B8529DCD14D0078AC72 /* BasicBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2898B8429DCD14D0078AC72 /* BasicBottomSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D2898B7929DCCC000078AC72 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D2898B7C29DCCC000078AC72 /* Opacity_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Opacity_App.xcdatamodel; sourceTree = "<group>"; };
 		D2898B7E29DCCC000078AC72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2898B8429DCD14D0078AC72 /* BasicBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicBottomSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				D2898B7029DCCBFE0078AC72 /* Opacity_AppApp.swift */,
 				D2898B7229DCCBFE0078AC72 /* ContentView.swift */,
+				D2898B8429DCD14D0078AC72 /* BasicBottomSheet.swift */,
 				D2898B7429DCCC000078AC72 /* Assets.xcassets */,
 				D2898B7929DCCC000078AC72 /* Persistence.swift */,
 				D2898B7E29DCCC000078AC72 /* Info.plist */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2898B8529DCD14D0078AC72 /* BasicBottomSheet.swift in Sources */,
 				D2898B7A29DCCC000078AC72 /* Persistence.swift in Sources */,
 				D2898B7D29DCCC000078AC72 /* Opacity_App.xcdatamodeld in Sources */,
 				D2898B7329DCCBFE0078AC72 /* ContentView.swift in Sources */,

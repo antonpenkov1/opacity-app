@@ -10,67 +10,76 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    @State private var animate = false
+    
     var body: some View {
+        
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+            ZStack{
+                VStack {
+                    Group {
+                        Text("Text capsules")
+                            .bold()
+                            .padding()
+                            .background(.purple.opacity(0.2), in: Capsule())
+                        
+                        Text("appear on tap")
+                            .bold()
+                            .padding()
+                            .background(.purple.opacity(0.2), in: Capsule())
+                    }
+                    .opacity(animate ? 1.0 : 0.0)
+                    ZStack{
+                        Image("soir_blue")
+                            .resizable()
+                            .scaledToFill()
+                            .edgesIgnoringSafeArea(.all)
+                            .frame(width: 200, height: 200)
+                            .clipped()
+                            .cornerRadius(30)
+                        Text("Tap me!")
+                            .font(.largeTitle)
+                            .bold()
+                            .foregroundColor(.white)
+                    }
+                    
+                    Group {
+                        Text("And disappear")
+                            .bold()
+                            .padding()
+                            .background(.purple.opacity(0.2), in: Capsule())
+                        
+                        Text("the same way")
+                            .bold()
+                            .padding()
+                            .background(.purple.opacity(0.2), in: Capsule())
+                    }
+                    .opacity(animate ? 1.0 : 0.0)
+                    
+                }
+                .onTapGesture {
+                    withAnimation(Animation.spring().speed(0.5)) {
+                        animate.toggle()
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                .frame(minWidth: 1000, minHeight: 1000)
+                
+                NavigationLink(destination: BasicBottomSheet())
+                {
+                    Text("Tap")
+                        .font(.headline)
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                .padding(15)
+                .frame(width: 70, height: 70)
+                .foregroundColor(.white)
+                .background(Color.accentColor)
+                .cornerRadius(50)
+                .padding(30)
+                .shadow(color: .black.opacity(0.3), radius: 5, x: 4, y: 4)
+                .offset(x: 120, y: 300)
             }
         }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+            
     }
 }
 
